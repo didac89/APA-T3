@@ -96,3 +96,16 @@ class Vector:
             return Vector(uno * otro for uno, otro in zip(self, other))
 
     __rmul__ = __mul__
+    
+    def __matmul__(self, other):
+        """
+        Multipliacion escalar a otro vector.
+        """
+        a = self * other
+        b = 0
+        for i in range(len(a)):
+            b=b+a[i]
+        
+        return b
+
+    __rmatmul__ = __matmul__
