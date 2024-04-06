@@ -1,7 +1,7 @@
 """
     Tercera tarea de APA - manejo de vectores
 
-    Nombre y apellidos:
+    Nombre y apellidos: Didac Bassas Grau - Vadym Lakymchuk
 """
 
 class Vector:
