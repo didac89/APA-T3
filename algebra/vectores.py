@@ -84,4 +84,15 @@ class Vector:
         """
 
         return -self + other
+    
+    def __mul__(self, other):
+        """
+        Multiplica al vector otro vector o una constante.
+        """
 
+        if isinstance(other, (int, float, complex)):
+            return Vector(uno * other for uno in self)
+        else:
+            return Vector(uno * otro for uno, otro in zip(self, other))
+
+    __rmul__ = __mul__
