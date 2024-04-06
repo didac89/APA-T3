@@ -109,3 +109,15 @@ class Vector:
         return b
 
     __rmatmul__ = __matmul__
+    
+    def __floordiv__(self, other):
+        """
+        Multipliacion escalar a otro vector.
+        """
+        a = self @ other
+        b = other @ other
+        c = (a/b) * other
+        return c
+
+    __rfloordiv__ = __floordiv__
+
