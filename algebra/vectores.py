@@ -121,3 +121,13 @@ class Vector:
 
     __rfloordiv__ = __floordiv__
 
+    def __mod__(self, other):
+        """
+        Multipliacion escalar a otro vector.
+        """
+        a = self//other
+        
+        return self - a
+
+    __rmod__ = __mod__
+
