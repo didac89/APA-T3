@@ -72,15 +72,60 @@ $v_2$, y $v_1^\perp$ es normal (perpendicular) a $v_2$.
 
 #### Ejecución de los tests unitarios
 
-Inserte a continuación una captura de pantalla que muestre el resultado de ejecutar el
-fichero `algebra/vectores.py` con la opción *verbosa*, de manera que se muestre el
-resultado de la ejecución de los tests unitarios.
+![test unitarios](T3.png)
 
 #### Código desarrollado
 
-Inserte a continuación el código de los métodos desarrollados en esta tarea, usando los
-comandos necesarios para que se realice el realce sintáctico en Python del mismo (no
-vale insertar una imagen o una captura de pantalla, debe hacerse en formato *markdown*).
+```python
+
+    def __mul__(self, other):
+        """
+        Multiplica al vector otro vector o una constante.
+        """
+
+        if isinstance(other, (int, float, complex)):
+            return Vector(uno * other for uno in self)
+        else:
+            return Vector(uno * otro for uno, otro in zip(self, other))
+
+    __rmul__ = __mul__
+    
+    def __matmul__(self, other):
+        """
+        Multipliacion escalar a otro vector.
+        """
+        a = self * other
+        b = 0
+        for i in range(len(a)):
+            b=b+a[i]
+        
+        return b
+
+    __rmatmul__ = __matmul__
+    
+    def __floordiv__(self, other):
+        """
+        Multipliacion escalar a otro vector.
+        """
+        a = self @ other
+        b = other @ other
+        c = (a/b) * other
+        return c
+
+    __rfloordiv__ = __floordiv__
+
+    def __mod__(self, other):
+        """
+        Multipliacion escalar a otro vector.
+        """
+        a = self//other
+        
+        return self - a
+
+    __rmod__ = __mod__
+
+
+```
 
 #### Subida del resultado al repositorio GitHub y *pull-request*
 
